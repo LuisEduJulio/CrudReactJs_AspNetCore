@@ -1,0 +1,18 @@
+.Table{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 100px;
+    margin: 10px;
+    background-color: rgb(69, 194, 216);
+}
+.Folder{
+    width: 120px;
+    height: 160px;
+    padding: 10px;
+}
+
+.FolderPng{
+    width: 30px;
+    height: 40px;
+}
