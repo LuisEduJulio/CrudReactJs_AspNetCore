@@ -1,10 +1,9 @@
 .Table{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 100px;
-    margin: 10px;
-    background-color: rgb(69, 194, 216);
+    margin-top: 80px;
+    padding: 40px;
+}
+.Grid{
+    margin-bottom: 30px;
 }
 .Folder{
     width: 120px;
@@ -15,4 +14,8 @@
 .FolderPng{
     width: 30px;
     height: 40px;
+}
+.Photo{
+    width: 60px;
+    height: 60px;
 }
