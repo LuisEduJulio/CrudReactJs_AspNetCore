@@ -72,7 +72,7 @@ namespace back.Controllers
         }
 
         //  api/produtos/1
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public ActionResult<Produto> Delete(int id)
         {
             var produto = _uof.ProdutoRepository.GetById(p => p.ProdutoId == id);

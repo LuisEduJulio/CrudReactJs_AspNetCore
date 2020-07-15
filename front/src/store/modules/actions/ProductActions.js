@@ -14,7 +14,7 @@ export function productUpdate_Request(data){
     }
 }
 
-export function productDelete_Request({id}){
+export function productDelete_Request(id){
     return {
         type: REGISTER_PRODUCT_DELETE,
         payload: {id}

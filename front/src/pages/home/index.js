@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { API_PRODUTO } from '../../services/api';
-import { Grid, Image, Pagination, Menu, Table, List, Item } from 'semantic-ui-react';
+import { Grid, Image, Pagination, Menu, Table, List, Item, Button } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { productDelete_Request } from '../../store/modules/actions/ProductActions';
+import History from '../../services/history';
 import './styles.css';
 
 function Home() {
     const [data, setData] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function RequestProduct() {
@@ -19,6 +23,12 @@ function Home() {
         RequestProduct();
     }, [])
 
+    function handleDelete(id){
+        dispatch(productDelete_Request(id));
+    }
+    function handleEdit(id){
+        History.push(`/editar/${id}`);
+    }
 
     return (
         <div className='Table'>
@@ -37,6 +47,12 @@ function Home() {
                                         <Item.Extra>Preço: R$ {Items.preco}</Item.Extra>
                                     </Item.Content>
                                 </Item>
+                                <Button color='blue'
+                                    onClick={() => handleEdit(Items.produtoId)}
+                                >Editar</Button>
+                                <Button negative
+                                    onClick={() => handleDelete(Items.produtoId)}
+                                >Delete</Button>                                
                             </Item.Group>
                         </Grid.Column>
                     )}
