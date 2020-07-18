@@ -3,7 +3,7 @@ import { AUTH } from '../../../services/api';
 import { SIGN_IN_REQUEST, REGISTER_REQUESTER, SIGN_OUT_REQUEST } from '../actionTypes';
 import { signInSuccess, signFailure } from '../actions/AuthActions';
 import History from '../../../services/history';
-
+import Swal from 'sweetalert2';
 
 export function* signIn({ payload }) {
   try {
@@ -14,15 +14,28 @@ export function* signIn({ payload }) {
       password
     });
     debugger
-    const {token} = response.data;
-    
+    const { token } = response.data;
+
     if (!token) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Dados Inválidos',
+      })
       return;
     }
-    
+
     AUTH.defaults.headers.Authorization = `Bearer ${token}`;
-    
+
     yield put(signInSuccess(token));
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Dados Corretos!',
+      showConfirmButton: false,
+      timer: 1500
+    })
 
     History.push('/home');
 
@@ -32,19 +45,19 @@ export function* signIn({ payload }) {
   }
 }
 
-export function* signUp({payload}){
-  try{
-    const {name, email, password} = payload;
+export function* signUp({ payload }) {
+  try {
+    const { name, email, password } = payload;
 
     yield call(AUTH.post, 'users', {
       name,
       email,
       password
     });
-    
+
     History.push('/');
 
-  }catch(err){
+  } catch (err) {
     yield put(signFailure());
   }
 }
@@ -58,7 +71,15 @@ export function setToken({ payload }) {
   }
 }
 
-export function signOut(){
+export function signOut() {
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Sessão encerrada!',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  
   History.push('/');
 }
 

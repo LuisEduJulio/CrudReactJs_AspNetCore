@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './store';
 import Routes from './routes';
 import 'dotenv/config';
+import './styles.css';
 
 function App() {
   return (

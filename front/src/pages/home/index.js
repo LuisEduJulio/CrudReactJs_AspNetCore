@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_PRODUTO } from '../../services/api';
-import { Grid, Image, Pagination, Menu, Table, List, Item, Button } from 'semantic-ui-react';
+import { Grid, Item, Button } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { productDelete_Request } from '../../store/modules/actions/ProductActions';
 import History from '../../services/history';

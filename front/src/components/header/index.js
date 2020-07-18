@@ -1,14 +1,21 @@
 import React from 'react';
-import { Input, Menu } from 'semantic-ui-react';
-import History from '../../services/history'
+import { Input, Menu, Button } from 'semantic-ui-react';
+import History from '../../services/history';
+import { useDispatch } from 'react-redux';
+import { singOutResquest } from '../../store/modules/actions/AuthActions';
 import './styles.css';
 
 export default function Header() {
-    function handleHome(){
+    const dispatch = useDispatch();
+
+    function handleHome() {
         History.push('/home')
     }
-    function handleAdd(){
+    function handleAdd() {
         History.push('/cadastro')
+    }
+    function handleLogout() {
+        dispatch(singOutResquest());
     }
     return (
         <div>
@@ -24,6 +31,9 @@ export default function Header() {
                 <Menu.Menu position='right'>
                     <Menu.Item>
                         <Input icon='search' placeholder='Search...' />
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Button icon='sign-out' onClick={() => handleLogout()} />
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>

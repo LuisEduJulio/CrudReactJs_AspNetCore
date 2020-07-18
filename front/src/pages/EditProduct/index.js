@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button } from 'semantic-ui-react';
 import { API_PRODUTO } from '../../services/api';
 import { useDispatch } from 'react-redux';
 import { productAdd_Request } from '../../store/modules/actions/ProductActions';
-import './styles.css';
 import { useParams } from 'react-router-dom';
+import './styles.css';
 
 function EditProduct() {
     const { id } = useParams();
     const date = new Date();
     const dispatch = useDispatch();
     const [categoria, setCategoria] = useState([]);
- const [product, setProduct] = useState('');
+    const [product, setProduct] = useState('');
 
     useEffect(() => {
-        async function RequestProduct() {
+        async function RequestCategory() {
             const response = await API_PRODUTO.get('categorias');
             console.log(response)
             if (response !== null) {
@@ -32,8 +32,7 @@ function EditProduct() {
                 setProduct('')
             }
         }
-
-        RequestProduct();
+        RequestCategory();
         RequestProduct();
     }, [])
 
@@ -41,7 +40,7 @@ function EditProduct() {
         dispatch(productAdd_Request(data));
     }
 
-     const [data, setData] = useState({
+    const [data, setData] = useState({
         produtoId: product.produtoId,
         nome: product.nome,
         descricao: product.descricao,
@@ -53,12 +52,10 @@ function EditProduct() {
         categoriaId: 1
     })
 
-
-
     return (
         <div className='FormAdd'>
-           
             <Form onSubmit={() => handleAdd()}>
+            <h1>{product.nome}</h1>
                 <Form.Group widths='equal'>
                     <Form.Field
                         id='form-input-control-first-name'
@@ -88,13 +85,15 @@ function EditProduct() {
                         onChange={(e) => setData({ ...data, estoque: e.target.value })}
                     />
                     <Form.Field
-                        control={Select}
-                        options={categoria.map((Items) => [{ key: Items.categoriaId, text: Items.nome, value: Items.nome }])}
-                        label={{ children: 'Categoria', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Categoria'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
-                    />
+                        label='Categorias'
+                        control='select'
+                        onChange={e => setData({ ...data, categoriaId: e.target.value })}
+                    >
+                        <option value='male'>Selecione um tipo</option>
+                        {categoria.map((Items, key) =>
+                            <option key={key} value={Items.categoriaId}>{Items.nome}</option>
+                        )}
+                    </Form.Field>
                 </Form.Group>
                 <Form.Field
                     id='form-textarea-control-opinion'

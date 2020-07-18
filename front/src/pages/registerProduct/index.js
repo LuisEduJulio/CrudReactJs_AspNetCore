@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, TextArea, Button, Select } from 'semantic-ui-react';
+import { Form, Input, TextArea, Button } from 'semantic-ui-react';
 import { API_PRODUTO } from '../../services/api';
 import { useDispatch } from 'react-redux';
 import { productAdd_Request } from '../../store/modules/actions/ProductActions';
@@ -15,8 +15,8 @@ function Add() {
         imagemUrl: 'http://www.macoratti.net/Imagens/coca.jpg',
         estoque: '',
         dataCadastro: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
-        categoria: 'Bebidas',
-        categoriaId: 1
+        categoria: null,
+        categoriaId: ''
     })
     const [categoria, setCategoria] = useState([]);
 
@@ -37,8 +37,6 @@ function Add() {
         }
         RequestProduct();
     }, [])
-
-
 
     return (
         <div className='FormAdd'>
@@ -72,13 +70,15 @@ function Add() {
                         onChange={(e) => setData({ ...data, estoque: e.target.value })}
                     />
                     <Form.Field
-                        control={Select}
-                        options={categoria.map((Items) => [{ key: Items.categoriaId, text: Items.nome, value: Items.nome }])}
-                        label={{ children: 'Categoria', htmlFor: 'form-select-control-gender' }}
-                        placeholder='Categoria'
-                        search
-                        searchInput={{ id: 'form-select-control-gender' }}
-                    />
+                        label='Categorias'
+                        control='select'
+                        onChange={e => setData({ ...data, categoriaId: e.target.value })}
+                    >
+                        <option value='male'>Selecione um tipo</option>
+                        {categoria.map((Items, key) =>
+                            <option key={key} value={Items.categoriaId}>{Items.nome}</option>
+                        )}
+                    </Form.Field>
                 </Form.Group>
                 <Form.Field
                     id='form-textarea-control-opinion'

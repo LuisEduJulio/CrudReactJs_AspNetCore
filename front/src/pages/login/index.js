@@ -3,14 +3,12 @@ import {
     Button,
     Divider,
     Grid,
-    Header,
-    Icon,
-    Input,
     Segment,
     Form
 } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { signInRequest } from '../../store/modules/actions/AuthActions';
+import History from '../../services/history';
 import './styles.css';
 
 function Login() {
@@ -23,38 +21,41 @@ function Login() {
 
         dispatch(signInRequest(email, password));
     }
+
+    function handleRegister(){
+        History.push('/registro')
+    }
     return (
         <div className='LoginContainer'>
             <Segment placeholder>
-                <Grid columns={2} stackable textAlign='center'>
-                    <Divider vertical>ou</Divider>
-                    <Grid.Row verticalAlign='middle'>
-                        <Form onSubmit={handleLogin} className='IconLogin'>
-                            <label>Email</label>
-                            <Input
+                <Grid columns={2} relaxed='very' stackable>
+                    <Grid.Column>
+                        <Form onSubmit={handleLogin} >
+                            <Form.Input
+                                icon='user'
+                                iconPosition='left'
+                                label='Email'
                                 placeholder='Email'
-                                type='email'
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                             />
-                            <label>Senha</label>
-                            <Input
-                                placeholder='Senha'
+                            <Form.Input
+                                icon='lock'
+                                iconPosition='left'
+                                label='Senha'
                                 type='password'
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                             />
-                            <Button primary type='submit'>Entrar</Button>
+                            <Button content='Entrar' type='submit' primary />
                         </Form>
-                        <Grid.Column>
-                            <Header icon>
-                                <Icon name='world' />
-                                    Registre-se
-                                </Header>
-                            <Button primary>Registro</Button>
-                        </Grid.Column>
-                    </Grid.Row>
+                    </Grid.Column>
+
+                    <Grid.Column verticalAlign='middle'>
+                        <Button content='Cadastre-se' icon='signup' size='big' onClick={() => handleRegister()} />
+                    </Grid.Column>
                 </Grid>
+                <Divider vertical>OU</Divider>
             </Segment>
         </div>
     );
