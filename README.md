@@ -4,14 +4,14 @@
 
 # Pacotes do Reactjs
 
-> redux
-> redux-saga
-> redux-persist
-> react-router-dom
-> semantic-ui-react
-> prop-types
-> axios
-> history
+> 1.redux
+> 2.redux-saga
+> 3.redux-persist
+> 4.react-router-dom
+> 5.semantic-ui-react
+> 6.prop-types
+> 7.axios
+> 8.history
 
 # Pacotes do Asp Net Core
 
