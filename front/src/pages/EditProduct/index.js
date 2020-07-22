@@ -55,7 +55,7 @@ function EditProduct() {
     return (
         <div className='FormAdd'>
             <Form onSubmit={() => handleAdd()}>
-            <h1>{product.nome}</h1>
+                <h1>{product.nome}</h1>
                 <Form.Group widths='equal'>
                     <Form.Field
                         id='form-input-control-first-name'

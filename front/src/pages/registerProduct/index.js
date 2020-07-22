@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { productAdd_Request } from '../../store/modules/actions/ProductActions';
 import './styles.css';
 
-function Add() {
+function RegisterProduct() {
     const date = new Date();
     const dispatch = useDispatch();
     const [data, setData] = useState({
@@ -99,4 +99,4 @@ function Add() {
         </div>
     );
 }
-export default Add;
+export default RegisterProduct;

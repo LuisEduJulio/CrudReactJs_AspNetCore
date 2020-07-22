@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import './styles.css';
 
-function registerUser() {
+function RegisterUser() {
     return (
         <div className='Register'>
             <Form className='attached fluid segment'>
@@ -29,4 +29,4 @@ function registerUser() {
     )
 }
 
-export default registerUser;
+export default RegisterUser;
