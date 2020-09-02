@@ -8,6 +8,7 @@ import RegisterProduct from '../pages/registerProduct';
 import RegisterUser from '../pages/registerUser';
 import EditProduct from '../pages/editProduct';
 import RegisterCategory from '../pages/registerCategory';
+import List from '../pages/list';
 
 function Routes() {
     return (
@@ -19,6 +20,7 @@ function Routes() {
                 <Auth exact path="/cadastro" component={RegisterProduct} isPrivate />
                 <Auth exact path="/editar/:id" component={EditProduct} isPrivate />
                 <Auth exact path="/registrarcategoria" component={RegisterCategory} isPrivate />
+                <Auth exact path="/lista" component={List} isPrivate />
             </Switch>
         </div>
     )

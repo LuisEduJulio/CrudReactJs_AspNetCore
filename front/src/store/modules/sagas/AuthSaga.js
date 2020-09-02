@@ -1,5 +1,5 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
-import { AUTH } from '../../../services/api';
+import { AUTH } from '../../../services/Api';
 import { SIGN_IN_REQUEST, REGISTER_REQUESTER, SIGN_OUT_REQUEST } from '../actionTypes';
 import { signInSuccess, signFailure } from '../actions/AuthActions';
 import History from '../../../services/history';

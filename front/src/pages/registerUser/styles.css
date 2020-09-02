@@ -3,6 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 50px;
     margin-top: 100px;
+}
+.ButtonLink{
+    color: #FFF;
+    text-decoration: none;
 }

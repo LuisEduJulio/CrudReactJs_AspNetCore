@@ -1,4 +1,4 @@
-import { CATEGORY_REQUEST, CATEGORY_UPDATE, CATEGORY_DELETE, CATEGORY_SUCESS, CATEGORY_FAILURE } from '../actionTypes';
+import { CATEGORY_REQUEST, CATEGORY_SUCESS, CATEGORY_FAILURE } from '../actionTypes';
 
 export function categoryAdd_Request(data){
     return{

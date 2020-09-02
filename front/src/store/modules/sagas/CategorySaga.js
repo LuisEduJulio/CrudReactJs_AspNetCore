@@ -1,5 +1,5 @@
 import { all, takeLatest, call, put } from "redux-saga/effects";
-import { API_PRODUTO } from '../../../services/api';
+import { API_PRODUTO } from '../../../services/Api';
 import History from '../../../services/history';
 import { CATEGORY_REQUEST } from '../actionTypes';
 import { category_Sucess, category_failure } from '../actions/CategoryActions';

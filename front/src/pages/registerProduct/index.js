@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, TextArea, Button } from 'semantic-ui-react';
-import { API_PRODUTO } from '../../services/api';
+import { API_PRODUTO } from '../../services/Api';
 import { useDispatch } from 'react-redux';
 import { productAdd_Request } from '../../store/modules/actions/ProductActions';
 import './styles.css';
